@@ -92,7 +92,7 @@ posts.forEach((element, index) => {
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-${element.id} class="js-likes-counter">${element.likes}</b> persone
+                    Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
                 </div>
             </div> 
         </div>            
@@ -100,28 +100,18 @@ posts.forEach((element, index) => {
 
 });
 
+// seleziono tutti i counters
+const counters = document.querySelectorAll(".js-likes-counter");
+console.log(counters);
 
 // selezioniamo tutti i bottoni per poi cambiarne il colore della scritta e incrementare il numero di like
 const bottoni = document.querySelectorAll(".js-like-button");
 // console.log(bottoni);
 
-// genero array vuoto per i post ai quali verrà associato il like
-let likesArray = [];
-
 // ciclo il mio simil array dei bottoni
-bottoni.forEach((element) => {
+bottoni.forEach((element, i) => {
 
-    console.log(element);
-
-    // dichiaro la variabile per il conteggio dei post tramite l'id
-    // const counter = element.getAttribute("data-postid");
-    // console.log(counter);
-
-    // // creo il counter
-    // const likeCounter = document.getElementById(`like-counter-${counter}`);
-    
-    // // creo oggetto con proprietà id da aggiungere al likesArray ad ogni click sul like
-    // let newObj = {id:counter};
+    // console.log(element);
 
     // gestione dell'evento al click
     element.addEventListener("click",
@@ -129,14 +119,29 @@ bottoni.forEach((element) => {
         function(event){
             event.preventDefault()
 
+
             if (element.classList.contains("like-button--liked")) {
                 element.classList.remove("like-button--liked");
 
+                let contatoreIesimo = counters[i];
+                // console.log(contatoreIesimo);
+                let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+                valoreContatore--;
+                contatoreIesimo.innerHTML = valoreContatore;
+                // console.log(valoreContatore);
 
             }else{
-
                 element.classList.add("like-button--liked");
+
+                let contatoreIesimo = counters[i];
+                // console.log(contatoreIesimo);
+                let valoreContatore = parseInt(contatoreIesimo.innerHTML);
+                valoreContatore++;
+                contatoreIesimo.innerHTML = valoreContatore;
+                // console.log(valoreContatore);
             }
+
+            
         }
 
     )
