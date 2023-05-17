@@ -126,7 +126,8 @@ bottoni.forEach((element) => {
     // gestione dell'evento al click
     element.addEventListener("click",
 
-        function(){
+        function(event){
+            event.preventDefault()
 
             if (element.classList.contains("like-button--liked")) {
                 element.classList.remove("like-button--liked");
