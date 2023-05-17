@@ -62,8 +62,6 @@ let postContainer = document.querySelector(".posts-list");
 // console.log(postContainer);
 
 // cicliamo il nostro array
-var totLikes = [];
-
 posts.forEach((element, index) => {
 
     // console.log(element, index);
@@ -100,13 +98,7 @@ posts.forEach((element, index) => {
         </div>            
     </div>`
 
-    const totLike = element.likes;
-    console.log(totLike);
-    totLikes.push(totLike);
 });
-
-console.log(totLikes);
-
 
 
 // selezioniamo tutti i bottoni per poi cambiarne il colore della scritta e incrementare il numero di like
@@ -115,8 +107,6 @@ const bottoni = document.querySelectorAll(".js-like-button");
 
 // genero array vuoto per i post ai quali verrà associato il like
 let likesArray = [];
-
-
 
 // ciclo il mio simil array dei bottoni
 bottoni.forEach((element) => {
@@ -137,35 +127,17 @@ bottoni.forEach((element) => {
     element.addEventListener("click",
 
         function(){
+
             if (element.classList.contains("like-button--liked")) {
                 element.classList.remove("like-button--liked");
 
-                const likes = totLikes + 1;
-                console.log(likes);
-
-                const counter = document.querySelector(".likes__counter");
-                counter.innerHTML = `Piace a <b id="like-counter-${element.id} class="js-likes-counter">${likes}</b> persone`
-
 
             }else{
-                const likes = totLikes + 2;
-                console.log(likes);
 
                 element.classList.add("like-button--liked");
-                const counter = document.querySelector(".likes__counter");
-                counter.innerHTML = `Piace a <b id="like-counter-${element.id} class="js-likes-counter">${likes}</b> persone`
             }
         }
 
     )
-
-    
-
-
-
-
-
-
-
 
 })
